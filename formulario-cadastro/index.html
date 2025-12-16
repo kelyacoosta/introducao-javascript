@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Formulário de Cadastro
+     1. Nome 
+     2. E-mail
+     3. Sexo
+     4. Data de Nascimento
+     
+     Validações 
+     1. Nome deverá ser nome e sobrenome
+     2. Email deverá conter @ e .com
+     3. Sexo deverá ser "M" || "F" || "Masculino" || "MASCULINO" || "masculino" || "Feminino" || "FEMININO" || "feminino"
+     4. Data nascimento formato pt-br "DD/MM/AAAA"-->
+
+    <main>
+        <h1>Formulário HTML - Cadastro</h1>
+
+        <form action="#" method="POST" id="form-cadastro">
+
+            <div class="input-wrapper">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" placeholder="Digite seu nome">
+            </div>
+
+            <div class="input-wrapper">
+                <label for="email">E-mail</label>
+                <input type="text" id="email" placeholder="Digite seu e-mail">
+            </div>
+
+            <div class="input-wrapper">
+                <label>Sexo</label>
+                <div class="radio-wrapper">
+                    <label>
+                        <input type="radio" name="sexo" value="masculino">
+                        Masculino
+                    </label>
+
+                    <label>
+                        <input type="radio" name="sexo" value="feminino">
+                        Feminino
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-wrapper">
+                <label for="data">Data de Nascimento</label>
+                <input type="text" id="data" placeholder="DD/MM/AAAA">
+            </div>
+
+            <div class="button-wrapper">
+                <button id="btn-submit">Cadastrar</button>
+                <button id="btn-reset" type="reset">Limpar</button>
+            </div>
+
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
