@@ -1,63 +1,23 @@
-const formCadastro = document.getElementById('form-cadastro')
+//  Validações 
+//     1. Nome deverá ser nome e sobrenome
+//     2. Email deverá conter @ e .com
+//     3. Sexo deverá ser "M" || "F" || "Masculino" || "MASCULINO" || "masculino" || "Feminino" || "FEMININO" || "feminino"
+//     4. Data nascimento Formato pt-br "DD/MM/AAAA"
 
-const nomeInput = document.getElementById('nome')
-const emailInput = document.getElementById('email')
-const dataInput = document.getElementById('data')
-const sexoInputs = document.getElementsByName('sexo')
+const formCadastro = document.querySelector("#form-cadastro")
+const nome = document.querySelector("#nome")
+const email = document.querySelector("#email")
+const sexo = document.querySelector("#sexo")
+const dataNascimento = document.querySelector("#data-nascimento")
 
-function validaInformacoes(nome, email, data) {
-
-    // Nome e sobrenome
-    if (nome.indexOf(" ") === -1) {
-        alert("Digite nome e sobrenome.")
-        return
-    }
-
-    // Email
-    if (email.indexOf("@") === -1 || email.indexOf(".com") === -1) {
-        alert("E-mail inválido.")
-        return
-    }
-
-    // Sexo
-    let sexoSelecionado = ""
-
-    for (let i = 0; i < sexoInputs.length; i++) {
-        if (sexoInputs[i].checked) {
-            sexoSelecionado = sexoInputs[i].value
-        }
-    }
-
-    if (sexoSelecionado === "") {
-        alert("Selecione o sexo.")
-        return
-    }
-
-    // Data
-    if (data.length !== 10 || data[2] !== "/" || data[5] !== "/") {
-        alert("Data inválida. Use DD/MM/AAAA.")
-        return
-    }
-
-    alert("Cadastro realizado com sucesso!")
-    resetForm()
-}
-
-function resetForm() {
-    nomeInput.value = ""
-    emailInput.value = ""
-    dataInput.value = ""
-
-    for (let i = 0; i < sexoInputs.length; i++) {
-        sexoInputs[i].checked = false
-    }
-}
-
-formCadastro.addEventListener('submit', function (event) {
+formCadastro.addEventListener('submit', (event) => {
     event.preventDefault()
-    validaInformacoes(
-        nomeInput.value,
-        emailInput.value,
-        dataInput.value
-    )
+    console.log('infos', nome.value, email.value, sexo.value, dataNascimento.value)
+
+    const possuiNomeESobrenome = nome.value.trim().split(' ').filter(item => item.length > 0).length > 1
+    console.log('possuiNomeESobrenome', possuiNomeESobrenome)
+
+    const emailRegex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
+    console.log('regex', emailRegex.test(email.value))
+
 })
